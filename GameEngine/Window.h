@@ -8,6 +8,9 @@ namespace GameEngine {
 		int width;
 		int height;
 
+		void(*update)();
+		void(*events)();
+
 		HWND wndHandle;
 		WNDCLASS wndClass = {};
 
@@ -16,7 +19,7 @@ namespace GameEngine {
 
 	public:
 		//ctors
-		Window(int, int, const wchar_t*);
+		Window(int, int, const wchar_t*, void(*)(), void(*)());
 
 		//getters
 		int getWidth();

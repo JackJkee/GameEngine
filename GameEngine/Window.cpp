@@ -1,16 +1,19 @@
 #include "Window.h"
 
 // Constructors
-GameEngine::Window::Window(int width, int height, const wchar_t* title) {
+GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*update)(), void(*events)()) {
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 
 	this->width = width; this->height = height; 
+	this->update = update; this->events = events;
 
 	this->wndClass.lpszClassName = L"GameEngineWindowClass";
 	this->wndClass.style = CS_HREDRAW | CS_VREDRAW;
 	this->wndClass.lpfnWndProc = &StaticWndProc;
 	RegisterClass(&this->wndClass);
 	wndHandle = CreateWindowEx(wndClass.style, wndClass.lpszClassName, title, WS_OVERLAPPEDWINDOW | WS_VISIBLE, 0, 0, width, height, NULL, NULL, hInstance, this);
+
+	
 
 	while (true) {
 		MSG message;
@@ -19,6 +22,9 @@ GameEngine::Window::Window(int width, int height, const wchar_t* title) {
 			TranslateMessage(&message);
 			DispatchMessage(&message);
 		}
+
+		if (NULL != update)
+			update();
 	}
 }
 
@@ -34,14 +40,9 @@ GameEngine::Window &GameEngine::Window::setHeight(int height) { this->height = h
 //WinProcess in class
 LRESULT GameEngine::Window::WndProc(UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	switch (uMsg) {
-		case WM_CLOSE:
-		case WM_DESTROY: {
-
-		}
-	default:
-		return DefWindowProc(wndHandle, uMsg, wParam, lParam);
-	}
+	if (events != NULL)
+		events();
+	return DefWindowProc(wndHandle, uMsg, wParam, lParam);
 }
 
 //Static WinProcess
