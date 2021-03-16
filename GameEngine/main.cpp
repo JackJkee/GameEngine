@@ -4,8 +4,11 @@ void update() {
 
 }
 
-void events() {
-
+void events(GameEngine::Window *window) {
+	unsigned int message = window->getMessage();
+	if (message == WM_CLOSE || message == WM_DESTROY) {
+		window->Close();
+	}
 }
 
 int main() {

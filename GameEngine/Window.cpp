@@ -1,11 +1,12 @@
 #include "Window.h"
 
 // Constructors
-GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*update)(), void(*events)()) {
+GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*update)(), void(*events)(GameEngine::Window*)) {
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 
 	this->width = width; this->height = height; 
 	this->update = update; this->events = events;
+	this->running = true;
 
 	this->wndClass.lpszClassName = L"GameEngineWindowClass";
 	this->wndClass.style = CS_HREDRAW | CS_VREDRAW;
@@ -15,7 +16,7 @@ GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*up
 
 	
 
-	while (true) {
+	while (running) {
 		MSG message;
 		while (PeekMessage(&message, wndHandle, 0, 0, PM_REMOVE))
 		{
@@ -31,17 +32,21 @@ GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*up
 // Getters
 int GameEngine::Window::getWidth() { return this->width; }
 int GameEngine::Window::getHeight() { return this->height; }
+unsigned int GameEngine::Window::getMessage() { return this->message; }
 
 // Setters
 
 GameEngine::Window &GameEngine::Window::setWidth(int width) { this->width = width; return *this; }
 GameEngine::Window &GameEngine::Window::setHeight(int height) { this->height = height; return *this; }
+void GameEngine::Window::Close() { running = false; }
 
 //WinProcess in class
 LRESULT GameEngine::Window::WndProc(UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	if (events != NULL)
-		events();
+	if (events != NULL) {
+		this->message = uMsg;
+		events(this);
+	}		
 	return DefWindowProc(wndHandle, uMsg, wParam, lParam);
 }
 

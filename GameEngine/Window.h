@@ -9,7 +9,7 @@ namespace GameEngine {
 		int height;
 
 		void(*update)();
-		void(*events)();
+		void(*events)(Window*);
 
 		HWND wndHandle;
 		WNDCLASS wndClass = {};
@@ -17,17 +17,22 @@ namespace GameEngine {
 		static LRESULT CALLBACK StaticWndProc(HWND, UINT, WPARAM, LPARAM);
 		LRESULT WndProc(UINT, WPARAM, LPARAM);
 
+		bool running;
+		unsigned int message;
+
 	public:
 		//ctors
-		Window(int, int, const wchar_t*, void(*)(), void(*)());
+		Window(int, int, const wchar_t*, void(*update)(), void(*events)(Window*));
 
 		//getters
 		int getWidth();
 		int getHeight();
+		unsigned int getMessage();
 
 		//setters
 		Window &setWidth(int);
 		Window &setHeight(int);
+		void Close();
 	};
 }
 
