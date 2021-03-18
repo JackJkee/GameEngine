@@ -1,10 +1,14 @@
 #pragma once
 #include <Windows.h>
+#include "Render.h"
 
 namespace GameEngine {
 	class Window
 	{
 	private:
+
+		RenderState render;
+
 		int width;
 		int height;
 
@@ -12,6 +16,7 @@ namespace GameEngine {
 		void(*events)(Window*);
 
 		HWND wndHandle;
+		HDC wndContext;
 		WNDCLASS wndClass = {};
 
 		static LRESULT CALLBACK StaticWndProc(HWND, UINT, WPARAM, LPARAM);
@@ -19,7 +24,6 @@ namespace GameEngine {
 
 		bool running;
 		unsigned int message;
-
 	public:
 		//ctors
 		Window(int, int, const wchar_t*, void(*update)(), void(*events)(Window*));
