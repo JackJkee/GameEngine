@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\utils">
+      <UniqueIdentifier>{140fb1d9-84f3-4538-9896-6cad0535429c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\utils">
+      <UniqueIdentifier>{d5b9a8fa-8eba-44b6-b812-f6bf992f5a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GameObjects">
+      <UniqueIdentifier>{99e99566-c085-4b5c-ad59-17f7c30a295d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GameObjects">
+      <UniqueIdentifier>{d9d1449b-de42-4ea2-9614-0c2d25b90196}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,8 +36,8 @@
     <ClCompile Include="Render.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Array.inl">
+      <Filter>Исходные файлы\utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -38,8 +50,8 @@
     <ClInclude Include="Render.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="Array.h">
+      <Filter>Файлы заголовков\utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

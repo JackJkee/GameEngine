@@ -12,7 +12,7 @@ namespace GameEngine {
 		int width;
 		int height;
 
-		void(*update)();
+		void(*update)(Window*);
 		void(*events)(Window*);
 
 		HWND wndHandle;
@@ -26,7 +26,7 @@ namespace GameEngine {
 		unsigned int message;
 	public:
 		//ctors
-		Window(int, int, const wchar_t*, void(*update)(), void(*events)(Window*));
+		Window(int, int, const wchar_t*, void(*update)(Window*), void(*events)(Window*));
 
 		//getters
 		int getWidth();
@@ -37,6 +37,7 @@ namespace GameEngine {
 		Window &setWidth(int);
 		Window &setHeight(int);
 		void Close();
+
 	};
 }
 

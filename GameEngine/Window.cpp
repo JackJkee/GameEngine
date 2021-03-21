@@ -1,7 +1,7 @@
 #include "Window.h"
 
 // Constructors
-GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*update)(), void(*events)(GameEngine::Window*)) {
+GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*update)(GameEngine::Window*), void(*events)(GameEngine::Window*)) {
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 
 	this->width = width; this->height = height; 
@@ -25,7 +25,7 @@ GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*up
 		}		
 
 		if (NULL != update)
-			update();
+			update(this);
 
 
 		StretchDIBits(wndContext, 0, 0, render.width, render.height, 0, 0, 
@@ -101,5 +101,3 @@ LRESULT GameEngine::Window::StaticWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, L
 	}
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
-
-

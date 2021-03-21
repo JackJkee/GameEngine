@@ -8,5 +8,7 @@ namespace GameEngine {
 		void* memory;
 		BITMAPINFO bmInfo;
 	};
+
+
 }
 

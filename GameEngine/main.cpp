@@ -1,7 +1,8 @@
 #include "GameEngine.h"
 
-void update() {
+void update(GameEngine::Window *window) {
 
+	
 }
 
 void events(GameEngine::Window *window) {
