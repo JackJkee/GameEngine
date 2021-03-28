@@ -19,7 +19,7 @@ namespace utils {
 
 		size_t getSize();
 		size_t getMemorySize();
-		T getElement(size_t);
+		T getElementByIndex(size_t);
 		Array<T>& Add(T);
 	};
 }

@@ -2,7 +2,6 @@
 
 void update(GameEngine::Window *window) {
 
-	
 }
 
 void events(GameEngine::Window *window) {

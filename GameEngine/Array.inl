@@ -49,7 +49,7 @@ utils::Array<T>& utils::Array<T>::Add(T element) {
 }
 
 template <typename T>
-T utils::Array<T>::getElement(size_t elementId) {
+T utils::Array<T>::getElementByIndex(size_t elementId) {
 	if (elementId < 0 || elementId >= array_size)
 		throw std::runtime_error("Array out range of point. Index: " + elementId);
 

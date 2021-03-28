@@ -39,6 +39,9 @@
     <ClCompile Include="Array.inl">
       <Filter>Исходные файлы\utils</Filter>
     </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Исходные файлы\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
@@ -51,6 +54,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Array.h">
+      <Filter>Файлы заголовков\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
       <Filter>Файлы заголовков\utils</Filter>
     </ClInclude>
   </ItemGroup>
