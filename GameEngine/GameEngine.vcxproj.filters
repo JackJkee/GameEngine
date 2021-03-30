@@ -39,7 +39,10 @@
     <ClCompile Include="Array.inl">
       <Filter>Исходные файлы\utils</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.cpp">
+    <ClCompile Include="Pixel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.inl">
       <Filter>Исходные файлы\utils</Filter>
     </ClCompile>
   </ItemGroup>
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>Файлы заголовков\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Pixel.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

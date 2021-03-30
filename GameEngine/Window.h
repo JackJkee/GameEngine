@@ -36,6 +36,8 @@ namespace GameEngine {
 		//setters
 		Window &setWidth(int);
 		Window &setHeight(int);
+		
+		RenderState& get_render() { return this->render; }
 		void Close();
 
 	};

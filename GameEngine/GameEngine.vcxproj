@@ -145,13 +145,17 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pixel.cpp" />
     <ClCompile Include="Render.cpp" />
-    <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="Vector.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="Pixel.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Window.h" />

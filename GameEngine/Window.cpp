@@ -56,6 +56,9 @@ LRESULT GameEngine::Window::WndProc(UINT uMsg, WPARAM wParam, LPARAM lParam)
 		GetClientRect(wndHandle, &rect);
 		render.width = rect.right - rect.left;
 		render.height = rect.bottom - rect.top;
+
+		this->width = render.width;
+		this->height = render.height;
 		
 		// sizeof(unsigned int) = 4 byte. Умножаем на него, чтобы иметь место в памяти для каждого цвета RGB
 		// 1 цвет = 1 байт. Тип цвета unsigned char или BYTE. Они идут в порядке не Red Green Blue,

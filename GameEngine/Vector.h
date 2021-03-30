@@ -1,5 +1,7 @@
 #pragma once
-#include <cmath>
+
+#ifndef _VECTOR_
+#define _VECTOR_
 
 namespace utils {
 
@@ -13,9 +15,12 @@ namespace utils {
 		Vector2d();
 		//getters
 		T get_x();
-		T get_y();		
+		T get_y();
+		//setters
+		Vector2d<T> &set_x(T);
+		Vector2d<T> &set_y(T);
 		//methods
-		virtual size_t get_distance(Vector2d);
+		size_t get_distance(Vector2d);
 	};
 
 	template <typename T> 
@@ -27,8 +32,10 @@ namespace utils {
 		Vector3d();
 		//getters
 		T get_z();
+		//setters
+		Vector2d<T> &set_z(T);
 		//methods
-		size_t get_distance (Vector3d) override;
+		size_t get_distance (Vector3d);
 	};
 
 	// Get distance between vectors (2D)
@@ -37,3 +44,5 @@ namespace utils {
 	template <typename T> size_t get_distance(Vector3d<T> pos_one, Vector3d<T> pos_two);
 }
 
+#include "Vector.inl"
+#endif
