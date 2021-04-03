@@ -1,6 +1,11 @@
 #pragma once
 #include <Windows.h>
 #include "Render.h"
+#include "IDrawable.h"
+
+#ifndef __WINDOW__
+#define __WINDOW__
+
 
 namespace GameEngine {
 	class Window
@@ -37,9 +42,12 @@ namespace GameEngine {
 		Window &setWidth(int);
 		Window &setHeight(int);
 		
+		void draw(GameObject::IDrawable&);
+		
 		RenderState& get_render() { return this->render; }
 		void Close();
 
 	};
 }
 
+#endif

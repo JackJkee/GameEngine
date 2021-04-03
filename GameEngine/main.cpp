@@ -1,10 +1,17 @@
 #include "GameEngine.h"
+#include "GameObject.h"
+#include <cstdlib>
+#include <vector>
+#include <time.h>
+#include <chrono>
+
+using namespace GameEngine;
+using namespace std::chrono;
+
+GameObject::Line line;
 
 void update(GameEngine::Window *window) {
-	GameEngine::Pixel pixel;
-	for (int i = 0; i < window->getWidth(); i++) {
-		pixel.draw(window, i, 100, 0x00FF00);
-	}
+	window->draw(line);
 }
 
 void events(GameEngine::Window *window) {
@@ -15,9 +22,7 @@ void events(GameEngine::Window *window) {
 }
 
 int main() {
-
 	const int w = 800, h = 800;
-
-	GameEngine::Window wnd(w, h, L"GameWindow", &update, &events);
+	GameEngine::Window wnd(w, h, L"GameWindow", &update, &events);	
 	return 0;
 }

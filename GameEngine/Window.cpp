@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "IDrawable.h"
 
 // Constructors
 GameEngine::Window::Window(int width, int height, const wchar_t* title, void(*update)(GameEngine::Window*), void(*events)(GameEngine::Window*)) {
@@ -44,7 +45,14 @@ unsigned int GameEngine::Window::getMessage() { return this->message; }
 
 GameEngine::Window &GameEngine::Window::setWidth(int width) { this->width = width; return *this; }
 GameEngine::Window &GameEngine::Window::setHeight(int height) { this->height = height; return *this; }
+
+void GameEngine::Window::draw(GameObject::IDrawable& object)
+{
+	object.draw(render);
+}
+
 void GameEngine::Window::Close() { running = false; }
+
 
 //WinProcess in class
 LRESULT GameEngine::Window::WndProc(UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -104,3 +112,5 @@ LRESULT GameEngine::Window::StaticWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, L
 	}
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
+
+

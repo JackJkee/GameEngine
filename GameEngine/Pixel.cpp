@@ -1,19 +1,29 @@
 #include "Window.h"
 #include "Pixel.h"
 
-utils::Vector2d<int> GameEngine::Pixel::get_pos()
+GameEngine::Pixel::Pixel() { m_position.setPosition(0,0); }
+GameEngine::Pixel::Pixel(GameEngine::Window* window) { m_window = window; }
+GameEngine::Pixel::Pixel(GameEngine::Window* window, int x, int y) { m_window = window; m_position.setX(x); m_position.setY(y); }
+GameEngine::Pixel::Pixel(GameEngine::Window* window, int x, int y, unsigned int color) { m_window = window; m_position.setX(x); m_position.setY(y); m_color = color; }
+
+void GameEngine::Pixel::initizliseWindow(GameEngine::Window* window)
 {
-    return this->pos;
+	m_window = window;
 }
 
-void GameEngine::Pixel::set_pos(utils::Vector2d<int> new_pos) {
-    this->pos = new_pos;
+void GameEngine::Pixel::setColor(unsigned int color) { m_color = color; }
+unsigned int GameEngine::Pixel::getColor() { return m_color; }
+
+void GameEngine::Pixel::draw() {
+	if (nullptr == this->m_window)
+		return;
+
+	unsigned int real_pos = m_position.getY() * m_window->getWidth() + m_position.getX();
+	unsigned int* pix = (unsigned int*)m_window->get_render().memory;
+
+	*(pix + real_pos) = getColor();
 }
 
-void GameEngine::Pixel::draw(GameEngine::Window* window, int x, int y, unsigned int color)
-{
-    int w = window->getWidth();
-    unsigned int* pixel = (unsigned int*)window->get_render().memory;
-    *(pixel + w * y + x) = color;
-}
+void GameEngine::Pixel::setPosition(Point2d<int> pos) { m_position = pos; }
 
+void GameEngine::Pixel::setPosition(int x, int y) { m_position.setX(x); m_position.setY(y); }
